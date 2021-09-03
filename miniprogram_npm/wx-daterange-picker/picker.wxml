@@ -1,0 +1,18 @@
+<!--daterange-picker/picker.wxml-->
+<view class="cu-daterange-modal bottom-modal {{isShowDateRangePicker?'show':''}}">
+  <view class="cu-daterange-dialog bg-white cu-daterange-picker">
+    <view class="cu-daterange-bar">
+      <view class="action btn-close" bindtap="close">取消</view>
+      <view class="action btn-ok"  bindtap="ok">确定</view>
+    </view>
+    <view style="padding: 0;padding-bottom: {{bottom}}rpx;">
+      <view class="selected-date">
+        <text style="color: #999;">已选日期：</text>
+        <text class="text">{{startDate}}{{startDate && endDate ? '~' : ''}}{{endDate}}</text>
+      </view>
+      <block wx:if="{{isShowDateRangePicker}}">
+        <cu-calendar isOpen isRangePicker bind:rangePickerChange="dateChange"></cu-calendar>
+      </block>
+    </view>
+  </view>
+</view>

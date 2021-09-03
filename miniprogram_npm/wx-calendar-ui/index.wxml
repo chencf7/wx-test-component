@@ -1,0 +1,37 @@
+<!--calendar-ui/index.wxml-->
+<view class="cu-calendar-wrapper">
+  <view class="calendar-header">
+    <view class="title-blue"><text style="visibility: hidden;">1</text></view>
+    <text wx:if="{{!isRangePicker}}" class="fs-36">每日记录（{{currentMonth}}月）</text>
+    <text wx:else class="fs-36">{{selectDay.year}}年{{selectDay.month}}月</text>
+  </view>
+  <view class="calendar-body">
+    <!-- 日历头部 -->
+    <view class="flex-around calendar-week">
+      <view class="view">一</view>
+      <view class="view">二</view>
+      <view class="view">三</view>
+      <view class="view">四</view>
+      <view class="view">五</view>
+      <view class="view">六</view>
+      <view class="view">日</view>
+    </view>
+    <!-- 日历主体 -->
+    <view class="flex-around flex-wrap calendar-table" bindtouchstart ='calendarTouchStart' bindtouchend="calendarTouchEnd">
+      <block wx:for="{{dateList}}" wx:key="dateList" >
+        <view class="day" data-datestr="{{item.dateString}}" bindtap="clickDayChange">
+          <view class="bg {{(item.year === selectDay.year && item.month === selectDay.month) ? (item.day === selectDay.day?'select':'') : 'other-month'}}">
+            {{item.day}}
+          </view>
+          <view class="spot" wx:if="{{item.spot}}"></view>
+        </view>
+      </block>
+    </view>
+    <block wx:if="{{!isRangePicker}}">
+      <view bindtap="showMoreClick" class="show-more">
+        <view wx:if="{{open}}" class="iconfont Arrow-DoubleSmallUp-Line"></view>
+        <view wx:else class="iconfont Arrow-DoubleSmallDown-Line"></view>
+      </view>
+    </block>
+  </view>
+</view>

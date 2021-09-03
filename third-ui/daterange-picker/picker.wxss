@@ -1,0 +1,153 @@
+/* third-ui/daterange-picker/picker.wxss */
+.cu-daterange-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1110;
+	opacity: 0;
+	outline: 0;
+	text-align: center;
+	-ms-transform: scale(1.185);
+	transform: scale(1.185);
+	backface-visibility: hidden;
+	perspective: 2000rpx;
+	background: rgba(0, 0, 0, 0.6);
+	transition: all 0.3s ease-in-out 0s;
+	pointer-events: none;
+}
+
+.cu-daterange-modal::before {
+	content: "\200B";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.cu-daterange-modal.show {
+	opacity: 1;
+	transition-duration: 0.3s;
+	-ms-transform: scale(1);
+	transform: scale(1);
+	overflow-x: hidden;
+	overflow-y: auto;
+	pointer-events: auto;
+}
+
+
+.cu-daterange-dialog{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+	width: 680rpx;
+	max-width: 100%;
+	background-color: #f8f8f8;
+	border-radius: 10rpx;
+	overflow: hidden;
+}
+
+.cu-daterange-modal.bottom-modal::before {
+	vertical-align: bottom;
+}
+
+.cu-daterange-modal.bottom-modal .cu-daterange-dialog{
+	width: 100%;
+	border-radius: 0;
+}
+
+.cu-daterange-modal.bottom-modal {
+	margin-bottom: -1000rpx;
+}
+
+.cu-daterange-modal.bottom-modal.show {
+	margin-bottom: 0;
+}
+
+.cu-daterange-modal.drawer-modal {
+	transform: scale(1);
+	display: flex;
+}
+
+.cu-daterange-modal.drawer-modal .cu-daterange-dialog{
+	height: 100%;
+	min-width: 200rpx;
+	border-radius: 0;
+	margin: initial;
+	transition-duration: 0.3s;
+}
+
+.cu-daterange-modal.drawer-modal.justify-start .cu-daterange-dialog{
+	transform: translateX(-100%);
+}
+
+.cu-daterange-modal.drawer-modal.justify-end .cu-daterange-dialog{
+	transform: translateX(100%);
+}
+
+.cu-daterange-modal.drawer-modal.show .cu-daterange-dialog{
+	transform: translateX(0%);
+}
+.cu-daterange-modal .cu-dialog>.cu-bar:first-child .action{
+  min-width: 100rpx;
+  margin-right: 0;
+  min-height: 100rpx;
+}
+
+.cu-daterange-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+
+.cu-daterange-bar .action {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	max-width: 100%;
+}
+
+.cu-daterange-bar .action:first-child {
+	margin-left: 30rpx;
+	font-size: 30rpx;
+}
+
+.cu-daterange-bar .action:last-child {
+	margin-right: 30rpx;
+}
+
+.cu-daterange-picker .action {
+  font-size: 32rpx !important;
+}
+
+.cu-daterange-picker .btn-close {
+  justify-content: left !important;
+}
+
+.cu-daterange-picker .btn-ok {
+  color: var(--blue);
+  justify-content: right !important;
+}
+
+.cu-daterange-picker .selected-date {
+  font-size: 32rpx;
+  padding: 0 32rpx 24rpx 30rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.cu-daterange-picker .selected-date .text {
+  padding-top: 8rpx;
+  color: #FFB31A
+}
+
+.bg-white {
+	background-color: #ffffff;
+	color: #666666;
+}

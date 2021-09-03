@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cu-calendar": "/miniprogram_npm/wx-calendar-ui/index"
+  }
+}

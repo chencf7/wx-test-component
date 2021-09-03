@@ -1,0 +1,160 @@
+/* calendar-ui/index.wxss */
+@font-face {
+  font-family: "iconfont"; /* Project id 2786858 */
+  src:
+       url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALwAAsAAAAAB2gAAAKhAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACCfgqCIIIEATYCJAMMCwgABCAFhGcHXxuBBsgekiSBSggUooJqDQGACL721vrNzP+Xk4tRh1j+VIxqhbyARYFQGI/yIMyi0fu/a5oBoIowZTdkVZSHP6XkAF/1hC2QHPpOsWM/t8qBcJifknZGnMpZhA8iSSwdk8ZatjZYvEC52ljDWiphrucFrZB2mRszL2gzZsYzAp02LWk92TqIosGGYCloVjshDrLsaKSTAur2XYoC0Xahxu4t4qeK9D294Eckf/yzHd0kVSYuOX3blNHdl90sf2t9I/8RiASYn1AhY3VnxjjrNp1qS0Kr2nQ2mdrNWtOLoOm0WjTtgNv3Hx4hETWR2Q0WIZxo2lpwazy8IIEMahScQRqgHh57RhodnZgwJ2KFSvlocjIezZ8EPRdrU1OJ0mmiIdkslMfHo3lXzmK1djoxEUuUjhPe+IH6UVNxp+E01l6WcUXBDaUnddea5JGuy3or+jbSVrNHR6f5rotGM3ogFuacHhEiRzr+99/x6/79nBva+d/eVcDfxFo90hd4ZfuNmYI/rbhBti3UTS5NnM4RyFZHBhI6pZcWYRv0Nl45hM4ktBvKkLSZQtZumijMMipdtlFrt4tOKzYPdxmiaROlA/MOCUK/cyS9fiPrd08U5hWVUe+o9ftHp7PoOa/LfEjrBggWyFjM4bSkKkSprEhqGJI2FYw6fxwMMw1eHPD6y9FtUMCYYoPpJIOWRTAxVIa33MeAUhVrhpoByfKmLEub8/lI01u8ksrQOgMQWIAME+VgaRKVggTtreLnhYEkGyUwkEQ8ZDClQToW4OVHENuCgiq7k0tMjqQgi4XACINEGGzLnwUoSoVpzbMygMTilRoR0MzxyXYEK3jXV7Kvx3pViB+cI0WOYvzQMFTXs6HaIoUIEyiNaZ6DtAKzta4N1VV8HUIAAAA=') format('woff2'),
+       url('//at.alicdn.com/t/font_2786858_bdcv0dmil.woff?t=1630633244130') format('woff'),
+       url('//at.alicdn.com/t/font_2786858_bdcv0dmil.ttf?t=1630633244130') format('truetype'),
+       url('//at.alicdn.com/t/font_2786858_bdcv0dmil.svg?t=1630633244130#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Arrow-DoubleSmallUp-Line:before {
+  content: "\ea75";
+}
+
+.Arrow-DoubleSmallDown-Line:before {
+  content: "\ea76";
+}
+
+.cu-calendar-wrapper {
+  background-color: #fff;
+}
+
+.cu-calendar-wrapper .fs-36 {
+  font-size: 36rpx;
+}
+
+.calendar-header {
+  padding: 0 32rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-header .title-blue {
+  background-color: #00a0e9;
+  width: 6rpx;
+  border-radius: 6rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.calendar-week {
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.calendar-week .view {
+  width: 100rpx;
+  text-align: center;
+}
+
+.calendar-table {
+  padding: 30rpx 0 0;
+  transition: height 0.3s;
+  align-content: flex-start;
+  overflow: hidden;
+}
+
+.calendar-table .day {
+  position: relative;
+  width: 100rpx;
+  color: #666;
+  text-align: center;
+  height: 72rpx;
+}
+
+.calendar-table .day .bg {
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.calendar-table .day .select {
+  width: 56rpx;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(-60deg, #00A0E9, #00A0E9);
+  box-shadow: 0px 5px 16px 0px #d9edf7;
+  margin: 0 auto;
+}
+
+.calendar-table .day .other-month {
+  color: #ccc;
+}
+
+.calendar-table .day .spot {
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #00A0E9;
+  border-radius: 50%;
+  margin: 6rpx auto 0;
+}
+
+.calendar-body .show-more {
+  padding: 0 0 20rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
