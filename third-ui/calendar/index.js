@@ -2,8 +2,8 @@
  * @description:
  * @author: chenchaofan
  * @date: 2021-09-03 08:56:38
- * @modifyTime: 2021-09-03 08:57:38
- * @filePath: \calendar-ui\src\index.js
+ * @modifyTime: 2021-09-03 17:05:09
+ * @filePath: \test-component\third-ui\calendar\index.js
  */
 // calendar-ui/index.js
 Component({
@@ -37,6 +37,8 @@ Component({
   data: {
     dateList: [], //日历主体渲染数组
     selectDay: {}, //选中时间
+    // 当前年月
+    currentYearMonth: [],
     // 当前月
     currentMonth: 0,
     // 是否展开
@@ -171,13 +173,16 @@ Component({
           if(i > 21 && i % 7 === 0 && now2.getDate() < 2) {
             break;
           }
-          let obj = {};
-          obj = {
+          const { startDate, endDate, isRangePicker } = pageData;
+          const currentDayStr = this.formatTime(now2, 'YYYY-MM-DD');
+
+          let obj = {
             day: now2.getDate(),
             month: now2.getMonth() + 1,
             year: now2.getFullYear(),
-            dateString: this.formatTime(now2, 'YYYY-MM-DD'),
-            spot: false
+            dateString: currentDayStr,
+            spot: false,
+            selected: isRangePicker && (currentDayStr >= startDate && currentDayStr <= endDate)
           };
           dateList[i] = obj;
         }
@@ -217,7 +222,8 @@ Component({
             day: setDay ? setDay : day,
             dateString: this.formatTime(dt, 'YYYY-MM-DD')
           },
-          currentMonth: setMonth
+          currentMonth: setMonth,
+          currentYearMonth: [setYear, setMonth]
         }
         this.setData(newPagedata)
 
@@ -319,7 +325,8 @@ Component({
               day: '',
               dateString: ''
             },
-            currentMonth: selectMonth
+            currentMonth: selectMonth,
+            currentYearMonth: [selectYear, selectMonth]
           });
           this.initDateList(selectYear, selectMonth);
         }
@@ -360,8 +367,9 @@ Component({
     clickDayChange(e) {
       const that = this;
       const pageData = this.data;
-      const clickedDateStr = e.currentTarget.dataset.datestr || '';
 
+      // 获取当前点击的天
+      const clickedDateStr = e.currentTarget.dataset.datestr || '';
       let dateArr = clickedDateStr.split('-').map(x => parseInt(x));
       if(Array.isArray(dateArr) && dateArr.length >= 3) {
         let selectDay = {
@@ -391,18 +399,24 @@ Component({
             }
           }
 
-          if (pageData.selectDay.day !== dateArr[2]) {
-            this.setData({
+          // 切换当前选中天
+          if (pageData.selectDay.month !== dateArr[1] || pageData.selectDay.day !== dateArr[2]) {
+            that.setData({
               selectDay: selectDay,
               currentMonth: dateArr[1],
             })
           }
 
+          // 触发事件
           setTimeout(() => {
             that.setData({
               startDate: tmpStartDate,
               endDate: tmpEndDate
             })
+            // 初始化日历选中列表
+            that.initDateList(pageData.currentYearMonth[0], pageData.currentYearMonth[1]);
+
+
             that.triggerEvent('rangePickerChange', {
               startDate: tmpStartDate,
               endDate: tmpEndDate

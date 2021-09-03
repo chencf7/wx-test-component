@@ -19,7 +19,7 @@
     <!-- 日历主体 -->
     <view class="flex-around flex-wrap calendar-table" bindtouchstart ='calendarTouchStart' bindtouchend="calendarTouchEnd">
       <block wx:for="{{dateList}}" wx:key="dateList" >
-        <view class="day" data-datestr="{{item.dateString}}" bindtap="clickDayChange">
+        <view class="day {{item.selected ? 'selected-rangedate' : ''}}" data-datestr="{{item.dateString}}" bindtap="clickDayChange">
           <view class="bg {{(item.year === selectDay.year && item.month === selectDay.month) ? (item.day === selectDay.day?'select':'') : 'other-month'}}">
             {{item.day}}
           </view>
